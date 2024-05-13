@@ -8,7 +8,7 @@
     - Use a while loop to validate your user name and password
 '''
 def employee_registration (file_name):
-    with open ('user.text', 'a'):
+    with open ('file_name', 'a') as file:
         while True:
             username = input ('Enter a username: ')
             password = input ('Enter a password: ' )
@@ -17,9 +17,29 @@ def employee_registration (file_name):
             if password != confirm_password:
                 print ('Passwords do not match. Please try again')
             else:
-                file_name.write (f"{username}, {password}\n")
+                file.write (f"{username}, {password}\n")
                 print ("Registration successful!")
                 break
+
+def user_login ():
+    users = {}  #empty dictionary to store the username and passwords
+    with open ('user.txt', 'r') as file:
+            for line in file:
+                username, password = line.strip().split(', ') # strip is for removing any whitespace characters
+                users [username] = password 
+
+    while True:
+            username = input ("Enter your username: ")
+            password = input ("Enter your password: ")
+
+            if username in users and users [username] == password:
+                print ("Login successful!")
+                break
+            else:
+                print ("Invalid username or password. Please try again!")
+
+
+
                                  
 
 
