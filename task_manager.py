@@ -20,10 +20,11 @@ def is_admin (username, password):
 
 
 # #employee_registration
-def employee_registration (file_name, is_admin_user ):
-    if not is_admin_user:
+def employee_registration (file_name, username, password ):
+    admin = is_admin (username, password)
+    if not admin:
         print("You do not have permission to register new users.")
-        return
+        return # exits the function prematurely if user is not an admin
           
     with open ('user.txt', 'a') as file:
         while True:
