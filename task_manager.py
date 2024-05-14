@@ -41,7 +41,22 @@ def user_login ():
             else:
                 print ("Invalid username or password. Please try again!")
 
-#main menu
+#function to add a new task
+def add_task(tasks_file, logged_in_user):
+    with open(tasks_file, 'a') as file:
+        assigned_user = input("Enter the username of the person assigned to the task: ")
+        task_title = input("Enter the title of the task: ")
+        task_description = input("Enter the description of the task: ")
+        due_date = input("Enter the due date for the task (YYYY-MM-DD): ")
+        assigned_date = datetime.date.today().strftime("%Y-%m-%d")
+        task_completed = "No"
+
+        task_details = f"{assigned_user}, {task_title}, {task_description}, {assigned_date}, {due_date}, {task_completed}\n"
+        file.write(task_details)
+        print("Task added successfully!")
+
+
+
 
 
 
