@@ -56,6 +56,27 @@ def add_task(tasks_file, logged_in_user):
         print("Task added successfully!")
 
 
+# view all tasks function
+def view_all_tasks(tasks_file):
+    with open(tasks_file, 'r') as file:
+        tasks = file.readlines()
+        if not tasks:
+            print("No tasks found.")
+        else:
+            print("All Tasks:")
+            for task in tasks:
+                task_details = task.strip().split(', ') #splits task into a list of values separated by a comma
+                assigned_user = task_details[0] #The subsequent lines assign each component of task_details
+                task_title = task_details[1]  #to separate variables e.g assigned_user using indexing
+                task_description = task_details[2]
+                assigned_date = task_details[3]
+                due_date = task_details[4]
+                task_completed = task_details[5]
+                print(f"Assigned User: {assigned_user}, Task Title: {task_title}, Task Description: {task_description}, Assigned Date: {assigned_date}, Due Date: {due_date}, Completed: {task_completed}")
+                print("-" * 20)  # to visually separate the details of each task
+
+
+
 
 
 
