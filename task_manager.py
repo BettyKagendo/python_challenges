@@ -76,6 +76,31 @@ def view_all_tasks(tasks_file):
                 print("-" * 20)  # to visually separate the details of each task
 
 
+#view my tasks
+
+def view_my_tasks(tasks_file, logged_in_user):
+    with open(tasks_file, 'r') as file:
+        tasks = file.readlines()
+
+    user_tasks = [task for task in tasks if task.strip().split(', ')[0] == logged_in_user]
+
+    if not user_tasks:
+        print("You have no tasks assigned.")
+    else:
+        print(f"Tasks assigned to {logged_in_user}:")
+        for task in user_tasks:
+            task_details = task.strip().split(', ')
+            print(f"Assigned User: {task_details[0]}")
+            print(f"Task Title: {task_details[1]}")
+            print(f"Task Description: {task_details[2]}")
+            print(f"Assigned Date: {task_details[3]}")
+            print(f"Due Date: {task_details[4]}")
+            print(f"Completed: {task_details[5]}")
+            print("-" * 20)
+
+
+
+
 
 
 
