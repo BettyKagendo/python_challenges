@@ -1,5 +1,6 @@
 #=====importing libraries===========
 '''This is the section where you will import libraries'''
+import datetime
 
 #====Login Section====
 '''Here you will write code that will allow a user to login.
@@ -7,8 +8,10 @@
     - You can use a list or dictionary to store a list of usernames and passwords from the file
     - Use a while loop to validate your user name and password
 '''
+
+#employee_registration
 def employee_registration (file_name):
-    with open ('file_name', 'a') as file:
+    with open ('user.txt', 'a') as file:
         while True:
             username = input ('Enter a username: ')
             password = input ('Enter a password: ' )
@@ -20,7 +23,7 @@ def employee_registration (file_name):
                 file.write (f"{username}, {password}\n")
                 print ("Registration successful!")
                 break
-
+# login section
 def user_login ():
     users = {}  #empty dictionary to store the username and passwords
     with open ('user.txt', 'r') as file:
@@ -34,9 +37,11 @@ def user_login ():
 
             if username in users and users [username] == password:
                 print ("Login successful!")
-                break
+                return username
             else:
                 print ("Invalid username or password. Please try again!")
+
+#main menu
 
 
 
