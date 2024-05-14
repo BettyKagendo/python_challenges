@@ -100,18 +100,6 @@ def view_my_tasks(tasks_file, logged_in_user):
 
 
 
-
-
-
-
-
-
-                                 
-
-
-
-
-
 while True:
     # Present the menu to the user and 
     # make sure that the user input is converted to lower case.
@@ -121,10 +109,10 @@ a - add task
 va - view all tasks
 vm - view my tasks
 e - exit
-: ''').lower()
+:''').lower()
 
     if menu == 'r':
-        pass
+        employee_registration('user.txt')
         '''This code block will add a new user to the user.txt file
         - You can use the following steps:
             - Request input of a new username
@@ -135,7 +123,13 @@ e - exit
               otherwise present a relevant message'''
 
     elif menu == 'a':
-        pass
+        logged_in_user = user_login()
+        if logged_in_user:
+            add_task('tasks.txt', logged_in_user)
+        else:
+            print("Login failed. Cannot add a task.")
+
+        
         '''This code block will allow a user to add a new task to task.txt file
         - You can use these steps:
             - Prompt a user for the following: 
@@ -148,8 +142,9 @@ e - exit
             - Remember to include 'No' to indicate that the task is not complete.'''
 
     elif menu == 'va':
-        pass
-        '''This code block will read the task from task.txt file and
+         view_all_tasks('tasks.txt')
+        
+         '''This code block will read the task from task.txt file and
          print to the console in the format of Output 2 presented in the PDF
          You can do it in this way:
             - Read a line from the file.
@@ -157,8 +152,14 @@ e - exit
             - Then print the results in the format shown in the Output 2 in the PDF
             - It is much easier to read a file using a for loop.'''
 
-    elif menu == 'vm':
-        pass
+    elif menu == 'vm':  
+        logged_in_user = user_login()
+        if logged_in_user:
+            view_my_tasks('tasks.txt', logged_in_user)
+        else:
+             print("Login failed. Cannot view your tasks.")
+    
+    
         '''This code block will read the task from task.txt file and
          print to the console in the format of Output 2 presented in the PDF
          You can do it in this way:
